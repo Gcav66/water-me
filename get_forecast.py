@@ -7,9 +7,6 @@ def build_url(mylat, mylong):
 	url ="https://api.weather.com/v1/geocode/"+mylat+"/"+mylong+"/forecast/daily/10day.json?language=en-US&units=e&apiKey="+API_KEY
 	return url
 
-test_url = build_url(5.6, -0.19)
-print test_url
-
 def get_forecast(url):
 	myForecasts = []
 	response = requests.get(url)
@@ -31,8 +28,6 @@ def get_action(mylat, mylong):
 	myForecast = get_forecast(url)
 	return myForecast
 
-test_action = get_action(5.6, -0.19)
-print test_action
 
 
 
