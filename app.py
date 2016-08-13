@@ -16,7 +16,9 @@ def index():
 	#action = get_action(5.6, -0.19)
 	#df = pd.DataFrame(action)
 	#return df.to_html(index=False)
-	message = "FOO"
+	#message = "FOO"
+	body = request.values.get('Body', None)
+	message = "Hey, fuck your " + body + " and the horse it rode in on!"
 	resp = twilio.twiml.Response()
 	resp.message(message)
 	return str(resp)
