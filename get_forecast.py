@@ -32,8 +32,13 @@ def get_action(mylat, mylong):
 	myForecast = get_forecast(url)
 	return myForecast
 
-
-
+"""
+action = get_action(12.0, -8.0)
+import pandas as pd
+df = pd.DataFrame(action)
+message = df[['date', 'action']].to_string(index=False)
+print message
+"""
 
 
 

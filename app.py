@@ -13,12 +13,16 @@ app = create_app()
 
 @app.route('/', methods = ['GET','POST'])
 def index():
-	#action = get_action(5.6, -0.19)
-	#df = pd.DataFrame(action)
-	#return df.to_html(index=False)
-	#message = "FOO"
 	body = request.values.get('Body', None)
-	message = "Hey, fuck your " + str(body) + " and the horse it rode in on!"
+	mylat = body.split(",")[0]
+	mylong = body.split(",")[1]
+	try:
+		action = get_action(mylat, mylong)
+		df = pd.DataFrame(action)
+		message = df[['date', 'action']].to_string(index=False)
+	except:
+		message = "Please provide a single lat/long separated by a comma, e.g., 12.0, -8.0"
+
 	resp = twilio.twiml.Response()
 	resp.message(message)
 	return str(resp)
