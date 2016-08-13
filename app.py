@@ -18,7 +18,7 @@ def index():
 	#return df.to_html(index=False)
 	#message = "FOO"
 	body = request.values.get('Body', None)
-	message = "Hey, fuck your " + body + " and the horse it rode in on!"
+	message = "Hey, fuck your " + str(body) + " and the horse it rode in on!"
 	resp = twilio.twiml.Response()
 	resp.message(message)
 	return str(resp)
