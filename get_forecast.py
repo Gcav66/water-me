@@ -1,4 +1,8 @@
-from credentials import API_KEY
+import os
+try:
+	from credentials import API_KEY
+except ImportError:
+	API_KEY = os.environ['API_KEY']
 import requests
 
 def build_url(mylat, mylong):
