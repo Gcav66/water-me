@@ -2,6 +2,8 @@ from flask import Flask, request, redirect, render_template, send_file
 import os
 from get_forecast import get_action
 import pandas as pd
+import twilio.twiml
+
 
 def create_app():
     app=Flask(__name__)
@@ -11,9 +13,14 @@ app = create_app()
 
 @app.route('/', methods = ['GET','POST'])
 def index():
-    action = get_action(5.6, -0.19)
-    df = pd.DataFrame(action)
-    return df.to_html(index=False)
+	#action = get_action(5.6, -0.19)
+	#df = pd.DataFrame(action)
+	#return df.to_html(index=False)
+	message = "FOO"
+	resp = twilio.twiml.Response()
+	resp.message(message)
+	return str(resp)
+
 	
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5001))
