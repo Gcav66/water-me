@@ -21,9 +21,9 @@ def get_forecast(url):
 		row['day_precip'] = int(result['day']['pop'])
 		row['night_precip'] = int(result['night']['pop'])
 		if row['day_precip'] <=50 and row['night_precip'] <= 50:
-			row['action'] = 'Irrigate'
+			row['action'] = 'Water Me!'
 		else:
-			row['action'] = 'Do not irrigate'
+			row['action'] = "Don't water me"
 		myForecasts.append(row)
 	return myForecasts
 
