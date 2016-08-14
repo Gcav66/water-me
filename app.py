@@ -17,7 +17,7 @@ def index():
 	try:
 		mylat = body.split(",")[0]
 		mylong = body.split(",")[1]
-	except AttributeError:
+	except:
 		message = "Please provide a single lat & long separated by a comma, e.g., 12.0, -8.0"
 		resp = twilio.twiml.Response()
 		resp.message(message)
